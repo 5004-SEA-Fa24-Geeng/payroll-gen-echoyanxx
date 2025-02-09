@@ -169,9 +169,8 @@ public class HourlyEmployee implements IEmployee {
      */
     @Override
     public String toCSV() {
-        String[] words = {this.type, this.name, this.id, String.valueOf(this.payRate),
-                String.valueOf(this.ytdEarnings), String.valueOf(this.ytdTaxesPaid),
-                String.valueOf(this.pretaxDeductions)};
+        String[] words = {this.type, this.name, this.id, String.valueOf(this.payRate), String.valueOf(this.pretaxDeductions),
+                String.valueOf(this.ytdEarnings), String.valueOf(this.ytdTaxesPaid)};
         return String.join(", ", words);
     }
 }
