@@ -1,5 +1,4 @@
 package student;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -8,15 +7,15 @@ import java.text.DecimalFormat;
  */
 public class PayStub implements IPayStub {
     /** The net pay after tax deductions. */
-    double netPay;
+    private double netPay;
     /** The total amount of taxes deducted. */
-    double taxes;
+    private double taxes;
     /** The name of the employee. */
-    String name;
+    private String name;
     /** The year-to-date earnings of the employee. */
-    double ytdEarning;
+    private double ytdEarning;
     /** The year-to-date taxes paid by the employee. */
-    double ytdTaxPay;
+    private double ytdTaxPay;
     /**
      * Constructs a PayStub object with the given details.
      *
