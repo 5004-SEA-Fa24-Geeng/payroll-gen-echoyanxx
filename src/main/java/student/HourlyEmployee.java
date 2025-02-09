@@ -1,16 +1,13 @@
 package student;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class HourlyEmployee implements IEmployee {
     private final String name;
     private final String id;
     private final double payRate;
-    private double ytdEarnings;
-    private double ytdTaxesPaid;
     private final double pretaxDeductions;
     private final String type;
+    private double ytdEarnings;
+    private double ytdTaxesPaid;
 
     public HourlyEmployee(
             String name, String id, double payRate, double pretaxDeductions, double ytdEarnings,

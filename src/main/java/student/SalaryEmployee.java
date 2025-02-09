@@ -4,10 +4,10 @@ public class SalaryEmployee implements IEmployee {
     private final String name;
     private final String id;
     private final double payRate;
-    private double ytdEarnings;
-    private double ytdTaxesPaid;
     private final double pretaxDeductions;
     private final String type;
+    private double ytdEarnings;
+    private double ytdTaxesPaid;
 
     public SalaryEmployee(
             String name, String id, double payRate, double pretaxDeductions,

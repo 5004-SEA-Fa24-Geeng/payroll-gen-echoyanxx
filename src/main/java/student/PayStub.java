@@ -1,6 +1,5 @@
 package student;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -18,6 +17,14 @@ public class PayStub implements IPayStub {
         this.ytdEarning = ytdEarning;
         this.ytdTaxPay = ytdTaxPay;
 
+    }
+
+    private static String round(double value) {
+        // If the number ends in .00, use 1 decimal place, otherwise use 2
+        double ten_times = 10 * value;
+        DecimalFormat df = (ten_times == (int) ten_times) ? new DecimalFormat("#.0") : new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        return df.format(value);
     }
 
     /**
@@ -59,13 +66,5 @@ public class PayStub implements IPayStub {
         String[] words = {this.name, String.format("%.2f", this.netPay), String.format("%.2f", this.taxes),
                 roundedYtdEarnings, round(this.ytdTaxPay)};
         return String.join(",", words);
-    }
-
-    private static String round(double value) {
-        // If the number ends in .00, use 1 decimal place, otherwise use 2
-        double ten_times = 10 * value;
-        DecimalFormat df = (ten_times == (int) ten_times) ? new DecimalFormat("#.0") : new DecimalFormat("#.##");
-        df.setRoundingMode(RoundingMode.HALF_UP);
-        return df.format(value);
     }
 }
