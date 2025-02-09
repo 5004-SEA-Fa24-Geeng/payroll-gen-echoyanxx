@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-public class PayStub implements IPayStub{
+public class PayStub implements IPayStub {
     double netPay;
     double taxes;
     String name;
@@ -19,6 +19,7 @@ public class PayStub implements IPayStub{
         this.ytdTaxPay = ytdTaxPay;
 
     }
+
     /**
      * Gets the pay for the current pay period.
      *

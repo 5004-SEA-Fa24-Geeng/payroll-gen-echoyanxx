@@ -1,8 +1,6 @@
 package student;
-import java.util.Arrays;
-import java.util.List;
 
-public class SalaryEmployee implements  IEmployee {
+public class SalaryEmployee implements IEmployee {
     private final String name;
     private final String id;
     private final double payRate;
@@ -13,7 +11,7 @@ public class SalaryEmployee implements  IEmployee {
 
     public SalaryEmployee(
             String name, String id, double payRate, double pretaxDeductions,
-            double ytdEarnings, double ytdTaxesPaid){
+            double ytdEarnings, double ytdTaxesPaid) {
 
         this.name = name;
         this.id = id;
@@ -23,6 +21,7 @@ public class SalaryEmployee implements  IEmployee {
         this.pretaxDeductions = pretaxDeductions;
         this.type = "SALARY";
     }
+
     /**
      * Gets the employee's name.
      *
@@ -160,8 +159,8 @@ public class SalaryEmployee implements  IEmployee {
      */
     @Override
     public String toCSV() {
-        String[] words = {this.type,this.name,this.id,String.valueOf(this.payRate),
-                String.valueOf(this.ytdEarnings),String.valueOf(this.ytdTaxesPaid),
+        String[] words = {this.type, this.name, this.id, String.valueOf(this.payRate),
+                String.valueOf(this.ytdEarnings), String.valueOf(this.ytdTaxesPaid),
                 String.valueOf(this.pretaxDeductions)};
         return String.join(", ", words);
     }

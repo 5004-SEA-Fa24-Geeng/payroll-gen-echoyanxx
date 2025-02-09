@@ -5,9 +5,10 @@ public class TimeCard implements ITimeCard {
     private final int hours;
 
     public TimeCard(String id, int hours) {
-    this.id = id;
-    this.hours = hours;
+        this.id = id;
+        this.hours = hours;
     }
+
     /**
      * Gets the employee ID.
      *

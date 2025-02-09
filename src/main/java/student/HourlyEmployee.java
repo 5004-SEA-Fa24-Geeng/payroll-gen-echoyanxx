@@ -14,7 +14,7 @@ public class HourlyEmployee implements IEmployee {
 
     public HourlyEmployee(
             String name, String id, double payRate, double pretaxDeductions, double ytdEarnings,
-            double ytdTaxesPaid){
+            double ytdTaxesPaid) {
 
         this.name = name;
         this.id = id;
@@ -24,6 +24,7 @@ public class HourlyEmployee implements IEmployee {
         this.pretaxDeductions = pretaxDeductions;
         this.type = "HOURLY";
     }
+
     /**
      * Gets the employee's name.
      *
@@ -142,10 +143,10 @@ public class HourlyEmployee implements IEmployee {
             return null;
         }
 
-        if (hoursWorked <= hours){
+        if (hoursWorked <= hours) {
             grossPay = hoursWorked * this.payRate;
         } else {
-            grossPay = (hours * this.payRate) + ((hoursWorked - hours)* rate * this.payRate);
+            grossPay = (hours * this.payRate) + ((hoursWorked - hours) * rate * this.payRate);
         }
 
         double taxes = (grossPay - this.pretaxDeductions) * taxesRate;
@@ -171,8 +172,8 @@ public class HourlyEmployee implements IEmployee {
      */
     @Override
     public String toCSV() {
-        String[] words = {this.type,this.name,this.id,String.valueOf(this.payRate),
-                String.valueOf(this.ytdEarnings),String.valueOf(this.ytdTaxesPaid),
+        String[] words = {this.type, this.name, this.id, String.valueOf(this.payRate),
+                String.valueOf(this.ytdEarnings), String.valueOf(this.ytdTaxesPaid),
                 String.valueOf(this.pretaxDeductions)};
         return String.join(", ", words);
     }
