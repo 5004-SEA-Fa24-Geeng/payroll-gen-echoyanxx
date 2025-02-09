@@ -2,7 +2,7 @@
  * Students, build off this class. We are providing one sample test case as file reading is new to
  * you.
  * 
- * NOTE: you may end up changing this completely depending on how you setup your project.
+ * NOTE: you may end up changing this completely depending on how you set up your project.
  * 
  * we are just using .main() as we know that is an entry point that we specified.
  * 

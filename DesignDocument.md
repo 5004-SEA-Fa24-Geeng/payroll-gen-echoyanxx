@@ -40,6 +40,63 @@ Go through your completed code, and update your class diagram to reflect the fin
 > If you resubmit your assignment for manual grading, this is a section that often needs updating. You should double check with every resubmit to make sure it is up to date.
 
 
+```mermaid
+---
+title: payroll
+---
+classDiagram
+    direction LR
+    IEmployee <|-- Salary
+    IEmployee <|-- Hourly
+    IEmployee <|-- IPayStub
+    IPayStub <|.. PayStub
+    Builder <|.. IEmployee
+    Builder <|.. ITimeCard
+    ITimeCard <|.. TimeCard
+    class IEmployee{
+        <<interface>>
+        + String getName()
+        + String getID()
+        + double getPayRate()
+        + String getEmployeeType()
+        + double getYTDEarnings()
+        + double getYTDTaxesPaid()
+        + double getPretaxDeductions()
+        + IPayStub runPayroll(double hoursWorked)
+        + String toCSV()
+    }
+    class IPayStub{
+        <<interface>>
+        + double getPay()
+        + double getTaxesPaid()
+        + String toCSV()
+    }
+    class ITimeCard{
+        <<interface>>
+        + String getEmployeeID()
+        + double getHoursWorked()
+    }
+    class PayrollGenerator{
+        - String DEFAULT_EMPLOYEE_FILE
+        - String DEFAULT_PAYROLL_FILE
+        - String DEFAULT_TIME_CARD_FILE
+    }
+    class Builder{
+        + IEmployee buildEmployeeFromCSV(String csv)
+        + ITimeCard buildTimeCardFromCSV(String csv)
+        + void main(String[] args)
+
+    }
+    class FileUtil{
+        + String EMPLOYEE_HEADER
+        + String PAY_STUB_HEADER
+        + List<String> readFileToList(String file)
+        + void writeFile(String outFile, List<String> lines)
+        + void writeFile(String outFile, List<String> lines, boolean backup)
+        
+    }
+```
+
 
 
 
