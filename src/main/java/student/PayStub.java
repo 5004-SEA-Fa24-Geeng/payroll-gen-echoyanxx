@@ -57,13 +57,16 @@ public class PayStub implements IPayStub {
     @Override
     public String toCSV() {
         // Create a DecimalFormat instance with two decimal places
-        DecimalFormat df = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("#.0#");
 
         // Format the double value
         String roundedYtdEarnings = df.format(this.ytdEarning);
+        String roundedTaxes = df.format(this.taxes);
 
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        String roundedNetPay = df.format(this.netPay);
 
-        String[] words = {this.name, String.format("%.2f", this.netPay), String.format("%.2f", this.taxes),
+        String[] words = {this.name, roundedNetPay, roundedTaxes,
                 roundedYtdEarnings, round(this.ytdTaxPay)};
         return String.join(",", words);
     }
