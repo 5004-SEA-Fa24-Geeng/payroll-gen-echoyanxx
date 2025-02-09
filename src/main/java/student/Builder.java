@@ -25,12 +25,12 @@ public final class Builder {
         String[] tokens = csv.split(",");
         if (tokens[0].equals("HOURLY")) {
             return new HourlyEmployee(tokens[1], tokens[2],
-                    Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]),
-                    Double.parseDouble(tokens[5]), Double.parseDouble(tokens[6]));
+                    Double.parseDouble(tokens[3]), Double.parseDouble(tokens[5]),
+                    Double.parseDouble(tokens[6]), Double.parseDouble(tokens[4]));
         } else {
             return new SalaryEmployee(tokens[1], tokens[2],
-                    Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]),
-                    Double.parseDouble(tokens[5]), Double.parseDouble(tokens[6]));
+                    Double.parseDouble(tokens[3]), Double.parseDouble(tokens[5]),
+                    Double.parseDouble(tokens[6]), Double.parseDouble(tokens[4]));
 
         }
     }

@@ -10,8 +10,8 @@ public class SalaryEmployee implements IEmployee {
     private double ytdTaxesPaid;
 
     public SalaryEmployee(
-            String name, String id, double payRate, double pretaxDeductions,
-            double ytdEarnings, double ytdTaxesPaid) {
+            String name, String id, double payRate,
+            double ytdEarnings, double ytdTaxesPaid, double pretaxDeductions) {
 
         this.name = name;
         this.id = id;
