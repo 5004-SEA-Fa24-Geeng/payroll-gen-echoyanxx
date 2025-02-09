@@ -1,9 +1,22 @@
 package student;
 
+/**
+ * Represents a time card that tracks the number of hours worked by an employee.
+ */
 public class TimeCard implements ITimeCard {
+
+    /** The unique identifier for the employee. */
     private final String id;
+
+    /** The number of hours worked. */
     private final int hours;
 
+    /**
+     * Constructs a TimeCard object with the given employee ID and worked hours.
+     *
+     * @param id     The unique identifier of the employee.
+     * @param hours  The number of hours worked.
+     */
     public TimeCard(String id, int hours) {
         this.id = id;
         this.hours = hours;

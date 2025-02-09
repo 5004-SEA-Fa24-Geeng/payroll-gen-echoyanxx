@@ -1,14 +1,42 @@
 package student;
 
+/**
+ * Represents a salaried employee, including their personal details,
+ * earnings, and tax deductions.
+ */
 public class SalaryEmployee implements IEmployee {
+
+    /** The name of the employee. */
     private final String name;
+
+    /** The unique ID of the employee. */
     private final String id;
+
+    /** The salary-based pay rate of the employee. */
     private final double payRate;
+
+    /** The pre-tax deductions applicable to the employee. */
     private final double pretaxDeductions;
+
+    /** The employment type, set as "SALARY". */
     private final String type;
+
+    /** The year-to-date earnings of the employee. */
     private double ytdEarnings;
+
+    /** The year-to-date taxes paid by the employee. */
     private double ytdTaxesPaid;
 
+    /**
+     * Constructs a new SalaryEmployee object with the specified details.
+     *
+     * @param name            The name of the employee.
+     * @param id              The unique identifier of the employee.
+     * @param payRate         The salary-based pay rate.
+     * @param ytdEarnings     The year-to-date earnings of the employee.
+     * @param ytdTaxesPaid    The year-to-date taxes paid by the employee.
+     * @param pretaxDeductions The pre-tax deductions for the employee.
+     */
     public SalaryEmployee(
             String name, String id, double payRate,
             double ytdEarnings, double ytdTaxesPaid, double pretaxDeductions) {
@@ -21,7 +49,6 @@ public class SalaryEmployee implements IEmployee {
         this.pretaxDeductions = pretaxDeductions;
         this.type = "SALARY";
     }
-
     /**
      * Gets the employee's name.
      *
@@ -159,7 +186,8 @@ public class SalaryEmployee implements IEmployee {
      */
     @Override
     public String toCSV() {
-        String[] words = {this.type, this.name, this.id, String.valueOf(this.payRate), String.valueOf(this.pretaxDeductions),
+        String[] words = {this.type, this.name, this.id, String.valueOf(this.payRate),
+                String.valueOf(this.pretaxDeductions),
                 String.valueOf(this.ytdEarnings), String.valueOf(this.ytdTaxesPaid)};
         return String.join(",", words);
     }

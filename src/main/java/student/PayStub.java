@@ -3,20 +3,35 @@ package student;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+/**
+ * Represents a pay stub for an employee, including earnings and tax details.
+ */
 public class PayStub implements IPayStub {
+    /** The net pay after tax deductions. */
     double netPay;
+    /** The total amount of taxes deducted. */
     double taxes;
+    /** The name of the employee. */
     String name;
+    /** The year-to-date earnings of the employee. */
     double ytdEarning;
+    /** The year-to-date taxes paid by the employee. */
     double ytdTaxPay;
-
+    /**
+     * Constructs a PayStub object with the given details.
+     *
+     * @param name       The name of the employee.
+     * @param netPay     The net pay after deductions.
+     * @param taxes      The total taxes deducted.
+     * @param ytdEarning The year-to-date earnings.
+     * @param ytdTaxPay  The year-to-date tax payments.
+     */
     public PayStub(String name, double netPay, double taxes, double ytdEarning, double ytdTaxPay) {
         this.name = name;
         this.netPay = netPay;
         this.taxes = taxes;
         this.ytdEarning = ytdEarning;
         this.ytdTaxPay = ytdTaxPay;
-
     }
 
     private static String round(double value) {
