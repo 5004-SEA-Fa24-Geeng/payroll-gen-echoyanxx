@@ -1,4 +1,5 @@
 package student;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -35,8 +36,8 @@ public class PayStub implements IPayStub {
 
     private static String round(double value) {
         // If the number ends in .00, use 1 decimal place, otherwise use 2
-        double ten_times = 10 * value;
-        DecimalFormat df = (ten_times == (int) ten_times) ? new DecimalFormat("#.0") : new DecimalFormat("#.##");
+        double tenTimes = 10 * value;
+        DecimalFormat df = (tenTimes == (int) tenTimes) ? new DecimalFormat("#.0") : new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.HALF_UP);
         return df.format(value);
     }
