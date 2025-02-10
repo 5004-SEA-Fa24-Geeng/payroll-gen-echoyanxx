@@ -6,28 +6,56 @@ package student;
  */
 
 public class HourlyEmployee implements IEmployee {
-    /** The name of the employee. */
+    /**
+     * The name of the employee.
+     */
     private final String name;
-    /** The unique ID of the employee. */
+    /**
+     * The unique ID of the employee.
+     */
     private final String id;
-    /** The hourly pay rate of the employee. */
+    /**
+     * The hourly pay rate of the employee.
+     */
     private final double payRate;
-    /** The pre-tax deductions applicable to the employee. */
+    /**
+     * The pre-tax deductions applicable to the employee.
+     */
     private final double pretaxDeductions;
-    /** The employment type, set as "HOURLY". */
+    /**
+     * The employment type, set as "HOURLY".
+     */
     private final String type;
-    /** The year-to-date earnings of the employee. */
+    /**
+     * The hours for standard work time.
+     */
+    private final int HOURS = 40;
+    /**
+     * The rate for over 40 hours per week.
+     */
+    private final double RATE = 1.5;
+    /**
+     * The tax rate.
+     */
+    private final double TAX_RATE = 0.2265;
+    /**
+     * The year-to-date earnings of the employee.
+     */
     private double ytdEarnings;
-    /** The year-to-date taxes paid by the employee. */
+    /**
+     * The year-to-date taxes paid by the employee.
+     */
     private double ytdTaxesPaid;
+
+
     /**
      * Constructs a new HourlyEmployee object with the specified details.
      *
-     * @param name            The name of the employee.
-     * @param id              The unique identifier of the employee.
-     * @param payRate         The hourly pay rate.
-     * @param ytdEarnings     The year-to-date earnings.
-     * @param ytdTaxesPaid    The year-to-date taxes paid.
+     * @param name             The name of the employee.
+     * @param id               The unique identifier of the employee.
+     * @param payRate          The hourly pay rate.
+     * @param ytdEarnings      The year-to-date earnings.
+     * @param ytdTaxesPaid     The year-to-date taxes paid.
      * @param pretaxDeductions The pre-tax deductions for the employee.
      */
     public HourlyEmployee(
@@ -153,9 +181,7 @@ public class HourlyEmployee implements IEmployee {
     @Override
     public IPayStub runPayroll(double hoursWorked) {
         double grossPay;
-        int HOURS = 40;
-        double RATE = 1.5;
-        double TAX_RATE = 0.2265;
+
 
         if (hoursWorked < 0) {
             return null;
