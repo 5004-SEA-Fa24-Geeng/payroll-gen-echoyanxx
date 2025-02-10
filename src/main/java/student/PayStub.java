@@ -9,15 +9,15 @@ import java.text.DecimalFormat;
  */
 public class PayStub implements IPayStub {
     /** The net pay after tax deductions. */
-    private double netPay;
+    private final double netPay;
     /** The total amount of taxes deducted. */
-    private double taxes;
+    private final double taxes;
     /** The name of the employee. */
-    private String name;
+    private final String name;
     /** The year-to-date earnings of the employee. */
-    private double ytdEarning;
+    private final double ytdEarning;
     /** The year-to-date taxes paid by the employee. */
-    private double ytdTaxPay;
+    private final double ytdTaxPay;
     /**
      * Constructs a PayStub object with the given details.
      *

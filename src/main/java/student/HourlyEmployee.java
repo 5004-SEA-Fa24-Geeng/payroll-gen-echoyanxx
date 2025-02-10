@@ -153,21 +153,21 @@ public class HourlyEmployee implements IEmployee {
     @Override
     public IPayStub runPayroll(double hoursWorked) {
         double grossPay;
-        int hours = 40;
-        double rate = 1.5;
-        double taxesRate = 0.2265;
+        int HOURS = 40;
+        double RATE = 1.5;
+        double TAX_RATE = 0.2265;
 
         if (hoursWorked < 0) {
             return null;
         }
 
-        if (hoursWorked <= hours) {
+        if (hoursWorked <= HOURS) {
             grossPay = hoursWorked * this.payRate;
         } else {
-            grossPay = (hours * this.payRate) + ((hoursWorked - hours) * rate * this.payRate);
+            grossPay = (HOURS * this.payRate) + ((hoursWorked - HOURS) * RATE * this.payRate);
         }
 
-        double taxes = (grossPay - this.pretaxDeductions) * taxesRate;
+        double taxes = (grossPay - this.pretaxDeductions) * TAX_RATE;
         double netPay = grossPay - this.pretaxDeductions - taxes;
         this.ytdEarnings += netPay;
         this.ytdTaxesPaid += taxes;

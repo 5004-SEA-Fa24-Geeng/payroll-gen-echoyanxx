@@ -9,6 +9,71 @@ This document is meant to provide a tool for you to demonstrate the design proce
 Place your class diagram below. Make sure you check the fil in the browser on github.com to make sure it is rendering correctly. If it is not, you will need to fix it. As a reminder, here is a link to tools that can help you create a class diagram: [Class Resources: Class Design Tools](https://github.com/CS5004-khoury-lionelle/Resources?tab=readme-ov-file#uml-design-tools)
 
 
+```mermaid
+---
+title: payroll
+---
+classDiagram
+    direction LR
+    IEmployee <|-- SalaryEmployee
+    IEmployee <|-- HourlyEmployee
+    IEmployee <|-- IPayStub
+    IPayStub <|.. PayStub
+    Builder <|.. IEmployee
+    Builder <|.. ITimeCard
+    ITimeCard <|.. TimeCard
+    class IEmployee{
+        <<interface>>
+        + String getName()
+        + String getID()
+        + double getPayRate()
+        + String getEmployeeType()
+        + double getYTDEarnings()
+        + double getYTDTaxesPaid()
+        + double getPretaxDeductions()
+        + IPayStub runPayroll(double hoursWorked)
+        + String toCSV()
+    }
+    class HourlyEmployee{
+    }
+    class SalaryEmployee{
+    }
+    class IPayStub{
+        <<interface>>
+        + double getPay()
+        + double getTaxesPaid()
+        + String toCSV()
+    }
+    class ITimeCard{
+        <<interface>>
+        + String getEmployeeID()
+        + double getHoursWorked()
+    }
+    class PayrollGenerator{
+        - String DEFAULT_EMPLOYEE_FILE
+        - String DEFAULT_PAYROLL_FILE
+        - String DEFAULT_TIME_CARD_FILE
+        + void main(String[] args))
+    }
+    class Builder{
+        + IEmployee buildEmployeeFromCSV(String csv)
+        + ITimeCard buildTimeCardFromCSV(String csv)
+        + void main(String[] args)
+
+    }
+    class FileUtil{
+        + String EMPLOYEE_HEADER
+        + String PAY_STUB_HEADER
+        + List<String> readFileToList(String file)
+        + void writeFile(String outFile, List<String> lines)
+        + void writeFile(String outFile, List<String> lines, boolean backup)
+        
+    }
+    class PayStub{
+    }
+    class TimeCard{
+    }
+```
 
 
 
@@ -46,15 +111,55 @@ title: payroll
 ---
 classDiagram
     direction LR
-    IEmployee <|-- Salary
-    IEmployee <|-- Hourly
+    IEmployee <|-- SalaryEmployee
+    IEmployee <|-- HourlyEmployee
     IEmployee <|-- IPayStub
     IPayStub <|.. PayStub
     Builder <|.. IEmployee
     Builder <|.. ITimeCard
     ITimeCard <|.. TimeCard
+    FileUtil<|..PayrollGenerator
+    Builder <|.. PayrollGenerator
+    IEmployee <|.. PayrollGenerator
+    IPayStub <|.. PayrollGenerator
     class IEmployee{
         <<interface>>
+        + String getName()
+        + String getID()
+        + double getPayRate()
+        + String getEmployeeType()
+        + double getYTDEarnings()
+        + double getYTDTaxesPaid()
+        + double getPretaxDeductions()
+        + IPayStub runPayroll(double hoursWorked)
+        + String toCSV()
+    }
+    class HourlyEmployee{
+        - String name
+        - String id
+        - double payRate
+        - double pretaxDeductions
+        - String type
+        - double ytdEarnings
+        - double ytdTaxesPaid
+        + String getName()
+        + String getID()
+        + double getPayRate()
+        + String getEmployeeType()
+        + double getYTDEarnings()
+        + double getYTDTaxesPaid()
+        + double getPretaxDeductions()
+        + IPayStub runPayroll(double hoursWorked)
+        + String toCSV()
+    }
+    class SalaryEmployee{
+        - String name
+        - String id
+        - double payRate
+        - double pretaxDeductions
+        - String type
+        - double ytdEarnings
+        - double ytdTaxesPaid
         + String getName()
         + String getID()
         + double getPayRate()
@@ -80,6 +185,7 @@ classDiagram
         - String DEFAULT_EMPLOYEE_FILE
         - String DEFAULT_PAYROLL_FILE
         - String DEFAULT_TIME_CARD_FILE
+        + void main(String[] args))
     }
     class Builder{
         + IEmployee buildEmployeeFromCSV(String csv)
@@ -95,6 +201,23 @@ classDiagram
         + void writeFile(String outFile, List<String> lines, boolean backup)
         
     }
+    class PayStub{
+         - double netPay
+         - double taxes
+         - String name
+         - double ytdEarning
+         - double ytdTaxPay
+         + double getPay()
+         + double getTaxesPaid()
+         + String toCSV()
+    }
+    class TimeCard{
+        - String id
+        - int hours
+        + String getEmployeeID()
+        + double getHoursWorked()
+        
+    }
 ```
 
 
@@ -106,3 +229,5 @@ classDiagram
 > The value of reflective writing has been highly researched and documented within computer science, from learning new information to showing higher salaries in the workplace. For this next part, we encourage you to take time, and truly focus on your retrospective.
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
+
+The final design is 99% the same as my initial design since the interfaces and skeleton of the code pretty much defines how each class talks to others.

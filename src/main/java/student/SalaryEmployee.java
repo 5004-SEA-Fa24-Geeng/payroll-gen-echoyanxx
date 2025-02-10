@@ -159,10 +159,10 @@ public class SalaryEmployee implements IEmployee {
     @Override
     public IPayStub runPayroll(double hoursWorked) {
         double grossPay;
-        double taxesRate = 0.2265;
+        double TAX_RATE = 0.2265;
 
         grossPay = this.payRate / 24; // 6250
-        double taxes = (grossPay - this.pretaxDeductions) * taxesRate;  // 1302.375
+        double taxes = (grossPay - this.pretaxDeductions) * TAX_RATE;  // 1302.375
         double netPay = grossPay - this.pretaxDeductions - taxes; // 4,447.625
         this.ytdEarnings += netPay; // 16,447.625
         this.ytdTaxesPaid += taxes;
