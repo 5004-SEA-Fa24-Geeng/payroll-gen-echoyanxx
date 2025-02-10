@@ -29,7 +29,7 @@ public class HourlyEmployee implements IEmployee {
     /**
      * The hours for standard work time.
      */
-    private final int hours = 40;
+    private static final int HOURS  = 40;
     /**
      * The rate for over 40 hours per week.
      */
