@@ -33,7 +33,7 @@ public class SalaryEmployee implements IEmployee {
     /**
      * the tax rate.
      */
-    private final double TAX_RATE = 0.2265;
+    private final double taxRate = 0.2265;
     /**
      * The year-to-date earnings of the employee.
      */
@@ -178,7 +178,7 @@ public class SalaryEmployee implements IEmployee {
         double grossPay;
 
         grossPay = this.payRate / 24; // 6250
-        double taxes = (grossPay - this.pretaxDeductions) * TAX_RATE;  // 1302.375
+        double taxes = (grossPay - this.pretaxDeductions) * taxRate;  // 1302.375
         double netPay = grossPay - this.pretaxDeductions - taxes; // 4,447.625
         this.ytdEarnings += netPay; // 16,447.625
         this.ytdTaxesPaid += taxes;
