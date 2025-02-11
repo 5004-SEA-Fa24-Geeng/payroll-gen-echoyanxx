@@ -33,11 +33,11 @@ public class HourlyEmployee implements IEmployee {
     /**
      * The rate for over 40 hours per week.
      */
-    private final double rate = 1.5;
+    private static final double RATE = 1.5;
     /**
      * The tax rate.
      */
-    private final double taxRate = 0.2265;
+    private static final double TAXRATE = 0.2265;
     /**
      * The year-to-date earnings of the employee.
      */
@@ -187,13 +187,13 @@ public class HourlyEmployee implements IEmployee {
             return null;
         }
 
-        if (hoursWorked <= hours) {
+        if (hoursWorked <= HOURS) {
             grossPay = hoursWorked * this.payRate;
         } else {
-            grossPay = (hours * this.payRate) + ((hoursWorked - hours) * rate * this.payRate);
+            grossPay = (HOURS * this.payRate) + ((hoursWorked - HOURS) * RATE * this.payRate);
         }
 
-        double taxes = (grossPay - this.pretaxDeductions) * taxRate;
+        double taxes = (grossPay - this.pretaxDeductions) * TAXRATE;
         double netPay = grossPay - this.pretaxDeductions - taxes;
         this.ytdEarnings += netPay;
         this.ytdTaxesPaid += taxes;
